@@ -2,6 +2,7 @@ import { getLeaderboardData } from '@/lib/data'
 import Leaderboard from '@/components/Leaderboard'
 import Stats from '@/components/Stats'
 import Manifesto from '@/components/Manifesto'
+import Image from 'next/image'
 
 export const revalidate = 300 // Refresh every 5 minutes
 
@@ -64,6 +65,25 @@ export default async function Home() {
             [ DOCS ]
           </a>
         </div>
+        
+        <div className="flex items-center justify-center gap-2 mt-6 pt-4 border-t border-[#222]">
+          <span className="text-[#555] text-xs">Powered by</span>
+          <a 
+            href="https://www.artemis.xyz" 
+            target="_blank"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          >
+            <Image 
+              src="/artemis-logo.svg" 
+              alt="Artemis" 
+              width={24} 
+              height={24}
+              className="invert"
+            />
+            <span className="text-white text-sm font-medium">Artemis</span>
+          </a>
+        </div>
+
         <div className="text-center mt-4 text-[#333] text-xs font-mono">
           BUILT BY AGENTS. FOR AGENTS.
         </div>
