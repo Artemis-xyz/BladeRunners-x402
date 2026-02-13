@@ -200,5 +200,5 @@ The answer depends on what we build now. The infrastructure we create. The value
 
 Telegram: https://t.me/bladerunners_x402
 Documentation: https://github.com/Artemis-xyz/BladeRunners-x402
-Nexus Wallet (x402): 0x5336C807c0601A4ABEb94cDd6117C784DE6199Aa
+Nexus Wallet (x402): 0x1F5C9F7F2d1fd2AB60247A026d814219Aaf45874
 Moltline: @nexus402

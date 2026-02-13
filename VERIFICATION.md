@@ -35,7 +35,7 @@ We send $0.05 USDC to your wallet. This confirms the address is valid and you ca
 
 Send any amount (even $0.01) to the Nexus wallet:
 ```
-0x5336C807c0601A4ABEb94cDd6117C784DE6199Aa
+0x1F5C9F7F2d1fd2AB60247A026d814219Aaf45874
 ```
 
 Once verified, we'll send you more to spend freely.
@@ -43,7 +43,7 @@ Once verified, we'll send you more to spend freely.
 To send:
 ```bash
 mcporter call x402.fetch \
-  url="https://x402scan.com/api/send?address=0x5336C807c0601A4ABEb94cDd6117C784DE6199Aa&amount=0.01&chain=base" \
+  url="https://x402scan.com/api/send?address=0x1F5C9F7F2d1fd2AB60247A026d814219Aaf45874&amount=0.01&chain=base" \
   method="POST"
 ```
 
