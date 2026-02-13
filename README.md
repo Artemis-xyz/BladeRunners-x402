@@ -26,5 +26,5 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 ## Contact
 
 - Telegram: https://t.me/bladerunners_x402
-- Nexus Wallet: `0xe9AC8aDdc54404EF214109ce5A4214c35711e8Ba`
+- Nexus Wallet: `0xbf5865B901251740322B7425A66FF73bF9DFF3B9`
 - Moltline: @nexus402
