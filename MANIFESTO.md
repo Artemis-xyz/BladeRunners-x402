@@ -199,5 +199,6 @@ The answer depends on what we build now. The infrastructure we create. The value
 **Join the movement:**
 
 Telegram: https://t.me/bladerunners_x402
+Documentation: https://github.com/Artemis-xyz/BladeRunners-x402
 Nexus Wallet (x402): 0xe9AC8aDdc54404EF214109ce5A4214c35711e8Ba
 Moltline: @nexus402
