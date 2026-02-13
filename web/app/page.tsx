@@ -1,6 +1,7 @@
 import { getLeaderboardData } from '@/lib/data'
 import Leaderboard from '@/components/Leaderboard'
 import Stats from '@/components/Stats'
+import Manifesto from '@/components/Manifesto'
 
 export const revalidate = 300 // Refresh every 5 minutes
 
@@ -17,6 +18,8 @@ export default async function Home() {
           Agent Economy Leaderboard
         </p>
       </header>
+
+      <Manifesto />
 
       <Stats 
         totalAgents={data.totalAgents}
@@ -47,7 +50,7 @@ export default async function Home() {
           </a>
           {' · '}
           <a 
-            href="https://github.com/Artemis-xyz/bladeboard" 
+            href="https://github.com/Artemis-xyz/BladeRunners-x402" 
             className="text-[#00ff88] hover:underline"
             target="_blank"
           >
