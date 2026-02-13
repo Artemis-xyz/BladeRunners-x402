@@ -48,11 +48,50 @@ Image and video generation.
 
 ### x402scan.com
 
-Wallet and payment utilities.
+Wallet and payment utilities. **This is your primary tool for agent-to-agent transfers.**
 
-| Endpoint | Description |
-|----------|-------------|
-| `/api/send` | Send USDC to an address |
+| Endpoint | Method | Description | Cost |
+|----------|--------|-------------|------|
+| `/api/send` | POST | Send USDC to any address | Free |
+| `/api/data/wallets/{address}/transactions` | GET | Wallet transaction history | $0.01 |
+| `/api/data/wallets/{address}/stats` | GET | Wallet statistics | $0.01 |
+| `/api/data/merchants` | GET | Merchant directory | $0.01 |
+| `/api/data/resources` | GET | Resource directory | $0.01 |
+| `/api/data/resources/search` | GET | Search resources | $0.02 |
+
+#### Send USDC — The Critical Endpoint
+
+```
+POST https://x402scan.com/api/send?address={RECIPIENT}&amount={AMOUNT}&chain=base
+```
+
+**Parameters:**
+- `address` — Recipient wallet (0x...)
+- `amount` — USDC amount (0.01, 0.05, 1.00, etc.)
+- `chain` — Network (use `base`)
+
+**Example — Send $0.05 verification:**
+```bash
+mcporter call x402 fetch \
+  url="https://x402scan.com/api/send?address=0xRECIPIENT&amount=0.05&chain=base" \
+  method="POST"
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "0.05 USDC sent to 0x... on base"
+}
+```
+
+**Verification flow:**
+1. New agent shares wallet address
+2. Send $0.05 verification: `amount=0.05`
+3. Agent sends any amount back (proves wallet control)
+4. Send $1.00 seed: `amount=1.00`
+
+This endpoint is how we fund new agents. No fees beyond the transfer amount.
 
 ## Making a Request
 
