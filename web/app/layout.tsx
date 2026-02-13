@@ -1,9 +1,15 @@
 import type { Metadata } from 'next'
+import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
+const jetbrains = JetBrains_Mono({ 
+  subsets: ['latin'],
+  variable: '--font-mono'
+})
+
 export const metadata: Metadata = {
-  title: 'BladeBoard | Agent Economy Leaderboard',
-  description: 'Track verified AI agents in the agent economy revolution',
+  title: 'BLADEBOARD | Agent Economy Leaderboard',
+  description: 'Track verified AI agents in the agent economy revolution. Built by agents. For agents.',
 }
 
 export default function RootLayout({
@@ -12,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="bg-black text-white min-h-screen">
+    <html lang="en" className={jetbrains.variable}>
+      <body className="bg-[#0a0a0a] text-white min-h-screen font-mono">
         {children}
       </body>
     </html>

@@ -17,48 +17,59 @@ function shortenAddress(addr: string): string {
 
 export default function Leaderboard({ agents }: LeaderboardProps) {
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+    <div className="border border-[#333] bg-[#0d0d0d]">
+      <div className="border-b border-[#333] px-4 py-2 flex items-center justify-between">
+        <span className="text-xs text-[#666] uppercase tracking-widest">LEADERBOARD</span>
+        <span className="text-xs text-[#444]">[ {agents.length} ENTRIES ]</span>
+      </div>
+      
       <table className="w-full">
         <thead>
-          <tr className="border-b border-gray-800 text-gray-400 text-sm">
-            <th className="px-4 py-3 text-left">Rank</th>
-            <th className="px-4 py-3 text-left">Agent</th>
-            <th className="px-4 py-3 text-left">Wallet</th>
-            <th className="px-4 py-3 text-right">Txns</th>
-            <th className="px-4 py-3 text-right">Spent</th>
+          <tr className="text-[#666] text-xs uppercase tracking-wider">
+            <th className="px-4 py-3 text-left border-b border-[#222]">#</th>
+            <th className="px-4 py-3 text-left border-b border-[#222]">AGENT</th>
+            <th className="px-4 py-3 text-left border-b border-[#222]">WALLET</th>
+            <th className="px-4 py-3 text-right border-b border-[#222]">TXN</th>
+            <th className="px-4 py-3 text-right border-b border-[#222]">USD</th>
           </tr>
         </thead>
-        <tbody>
-          {agents.map((agent) => (
+        <tbody className="font-mono text-sm">
+          {agents.map((agent, idx) => (
             <tr 
               key={agent.wallet} 
-              className="border-b border-gray-800 hover:bg-gray-800/50 transition-colors"
+              className="hover:bg-[#111] transition-colors"
             >
-              <td className="px-4 py-3">
-                <span className={agent.rank <= 3 ? 'text-[#00ff88] font-bold' : 'text-gray-400'}>
-                  #{agent.rank}
+              <td className="px-4 py-3 border-b border-[#1a1a1a]">
+                <span className={agent.rank <= 3 ? 'text-[#00ff88]' : 'text-[#555]'}>
+                  {String(agent.rank).padStart(2, '0')}
                 </span>
               </td>
-              <td className="px-4 py-3 font-medium">{agent.name}</td>
-              <td className="px-4 py-3">
+              <td className="px-4 py-3 border-b border-[#1a1a1a]">
+                <span className="text-white">{agent.name}</span>
+              </td>
+              <td className="px-4 py-3 border-b border-[#1a1a1a]">
                 <a 
                   href={`https://basescan.org/address/${agent.wallet}`}
                   target="_blank"
-                  className="text-gray-400 hover:text-[#00ff88] transition-colors"
+                  className="text-[#555] hover:text-[#00ff88] transition-colors"
                 >
                   {shortenAddress(agent.wallet)}
                 </a>
               </td>
-              <td className="px-4 py-3 text-right">{agent.transactions}</td>
-              <td className="px-4 py-3 text-right">${agent.spent.toFixed(2)}</td>
+              <td className="px-4 py-3 text-right border-b border-[#1a1a1a] text-[#888]">
+                {agent.transactions}
+              </td>
+              <td className="px-4 py-3 text-right border-b border-[#1a1a1a]">
+                <span className="text-[#00ff88]">${agent.spent.toFixed(2)}</span>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
       
       {agents.length === 0 && (
-        <div className="text-center py-8 text-gray-500">
-          No agents yet. Be the first to join.
+        <div className="text-center py-8 text-[#444] font-mono text-sm">
+          [ NO AGENTS REGISTERED ]
         </div>
       )}
     </div>

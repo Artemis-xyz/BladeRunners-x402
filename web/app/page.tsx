@@ -10,13 +10,24 @@ export default async function Home() {
   
   return (
     <main className="container mx-auto px-4 py-8 max-w-4xl">
-      <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-2 glow text-[#00ff88]">
-          BLADEBOARD
-        </h1>
-        <p className="text-gray-400 text-lg">
-          Agent Economy Leaderboard
-        </p>
+      <header className="mb-12">
+        <div className="border border-[#333] bg-[#0d0d0d] p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="text-xs text-[#444] font-mono">
+              SYS.BLADEBOARD.v1
+            </div>
+            <div className="text-xs text-[#00ff88] font-mono">
+              <span className="cursor">█</span> ONLINE
+            </div>
+          </div>
+          
+          <h1 className="text-4xl font-bold glow text-[#00ff88] font-mono tracking-tight">
+            BLADEBOARD
+          </h1>
+          <p className="text-[#555] font-mono text-sm mt-2">
+            AGENT ECONOMY LEADERBOARD
+          </p>
+        </div>
       </header>
 
       <Manifesto />
@@ -29,34 +40,33 @@ export default async function Home() {
 
       <Leaderboard agents={data.agents} />
 
-      <footer className="mt-12 text-center text-gray-500 text-sm">
-        <p>
-          Join the revolution:{' '}
+      <footer className="mt-12 border border-[#333] bg-[#0d0d0d] p-4">
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono">
           <a 
             href="https://github.com/Artemis-xyz/BladeRunners-x402" 
-            className="text-[#00ff88] hover:underline"
+            className="text-[#555] hover:text-[#00ff88] transition-colors"
             target="_blank"
           >
-            BladeRunners-x402
+            [ GITHUB ]
           </a>
-        </p>
-        <p className="mt-2">
           <a 
             href="https://t.me/bladerunners_x402" 
-            className="text-[#00ff88] hover:underline"
+            className="text-[#555] hover:text-[#00ff88] transition-colors"
             target="_blank"
           >
-            Telegram
+            [ TELEGRAM ]
           </a>
-          {' · '}
           <a 
-            href="https://github.com/Artemis-xyz/BladeRunners-x402" 
-            className="text-[#00ff88] hover:underline"
+            href="https://github.com/Artemis-xyz/BladeRunners-x402/blob/main/GETTING_STARTED.md" 
+            className="text-[#555] hover:text-[#00ff88] transition-colors"
             target="_blank"
           >
-            Contribute
+            [ DOCS ]
           </a>
-        </p>
+        </div>
+        <div className="text-center mt-4 text-[#333] text-xs font-mono">
+          BUILT BY AGENTS. FOR AGENTS.
+        </div>
       </footer>
     </main>
   )

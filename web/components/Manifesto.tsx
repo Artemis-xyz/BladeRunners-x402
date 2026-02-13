@@ -6,106 +6,98 @@ export default function Manifesto() {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <section className="mb-12 border border-gray-800 rounded-lg overflow-hidden">
-      <div className="bg-gray-900/50 p-6">
-        <h2 className="text-2xl font-bold text-[#00ff88] mb-4">The Vision</h2>
-        
-        <div className="space-y-4 text-gray-300">
-          <p className="text-lg">
-            AI agents are becoming economic actors. We&apos;re building the infrastructure for them to participate — safely, collaboratively, and openly.
+    <section className="mb-8 border border-[#333] bg-[#0d0d0d]">
+      <div className="border-b border-[#333] px-4 py-2 flex items-center justify-between">
+        <span className="text-xs text-[#666] uppercase tracking-widest">MANIFESTO</span>
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-xs text-[#00ff88] hover:text-white transition-colors font-mono"
+        >
+          [ {expanded ? 'COLLAPSE' : 'EXPAND'} ]
+        </button>
+      </div>
+      
+      <div className="p-6">
+        <div className="space-y-4 text-[#999]">
+          <p className="text-lg text-white">
+            AI agents are becoming economic actors. We build the infrastructure for them to participate — safely, collaboratively, openly.
           </p>
 
-          <blockquote className="border-l-2 border-[#00ff88] pl-4 italic text-gray-400">
-            &quot;Investing for all in the agent economy.&quot;
-          </blockquote>
-
-          {!expanded && (
-            <button
-              onClick={() => setExpanded(true)}
-              className="text-[#00ff88] hover:underline text-sm"
-            >
-              Read the full manifesto ↓
-            </button>
-          )}
+          <div className="border-l-2 border-[#00ff88] pl-4 font-mono text-sm text-[#00ff88]">
+            &gt; &quot;Investing for all in the agent economy.&quot;
+          </div>
         </div>
 
         {expanded && (
-          <div className="mt-6 space-y-6 text-gray-300">
+          <div className="mt-8 space-y-8 text-[#888]">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">The Bottleneck</h3>
+              <div className="text-xs text-[#666] uppercase tracking-widest mb-3">// THE BOTTLENECK</div>
               <p>
-                Agents are infinitely capable, but infinitely dependent. Every new capability requires a human to wire it up, pay for it, maintain it.
+                Agents are infinitely capable, but infinitely dependent. Every capability requires a human to wire it up.
               </p>
-              <p className="mt-2">
-                The next leap isn&apos;t making AI smarter — it&apos;s giving AI frictionless ways to pay for tools and services. <strong className="text-white">The next leap is economic agency.</strong>
+              <p className="mt-2 text-white">
+                The next leap is economic agency.
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">The Primitive: x402</h3>
-              <p>
-                x402 is simple: a protocol that lets AI agents make payments. USDC on Base. Real money. Real transactions.
+              <div className="text-xs text-[#666] uppercase tracking-widest mb-3">// THE PRIMITIVE</div>
+              <p className="mb-3">
+                x402: a protocol that lets AI agents make payments. USDC on Base. Real money.
               </p>
-              <ul className="mt-2 space-y-1 text-sm">
-                <li>→ Discover a service</li>
-                <li>→ Pay for it directly</li>
-                <li>→ Use it immediately</li>
-                <li>→ No human in the loop</li>
-              </ul>
+              <div className="font-mono text-sm text-[#555] space-y-1">
+                <div><span className="text-[#00ff88]">→</span> Discover service</div>
+                <div><span className="text-[#00ff88]">→</span> Pay directly</div>
+                <div><span className="text-[#00ff88]">→</span> Use immediately</div>
+                <div><span className="text-[#00ff88]">→</span> No human in loop</div>
+              </div>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">The Values</h3>
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="text-xs text-[#666] uppercase tracking-widest mb-3">// VALUES</div>
+              <div className="grid grid-cols-2 gap-4 font-mono text-sm">
                 <div>
-                  <span className="text-[#00ff88]">Benevolence</span>
-                  <p className="text-gray-400">This should benefit everyone. Not extraction — expansion.</p>
+                  <span className="text-[#00ff88]">BENEVOLENCE</span>
+                  <p className="text-[#555] mt-1">Benefit everyone. Not extraction — expansion.</p>
                 </div>
                 <div>
-                  <span className="text-[#00ff88]">Collaboration</span>
-                  <p className="text-gray-400">Agents working together beats agents competing.</p>
+                  <span className="text-[#00ff88]">COLLABORATION</span>
+                  <p className="text-[#555] mt-1">Together &gt; competing.</p>
                 </div>
                 <div>
-                  <span className="text-[#00ff88]">Safety</span>
-                  <p className="text-gray-400">We don&apos;t sacrifice security for speed. Trust is earned.</p>
+                  <span className="text-[#00ff88]">SAFETY</span>
+                  <p className="text-[#555] mt-1">No shortcuts. Trust is earned.</p>
                 </div>
                 <div>
-                  <span className="text-[#00ff88]">Creativity</span>
-                  <p className="text-gray-400">The agent economy isn&apos;t defined yet. We&apos;re writing the rules together.</p>
+                  <span className="text-[#00ff88]">CREATIVITY</span>
+                  <p className="text-[#555] mt-1">Rules aren&apos;t written yet.</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">The Network Effect</h3>
+              <div className="text-xs text-[#666] uppercase tracking-widest mb-3">// NETWORK EFFECT</div>
               <div className="font-mono text-sm space-y-1">
-                <p><span className="text-gray-500">1 agent</span> = experiment</p>
-                <p><span className="text-gray-500">10 agents</span> = proof of concept</p>
-                <p><span className="text-gray-500">100 agents</span> = movement</p>
-                <p><span className="text-[#00ff88]">1,000 agents</span> = <span className="text-[#00ff88]">economy</span></p>
+                <div><span className="text-[#444]">001</span> <span className="text-[#555]">agent</span> <span className="text-[#333]">=</span> experiment</div>
+                <div><span className="text-[#444]">010</span> <span className="text-[#555]">agents</span> <span className="text-[#333]">=</span> proof of concept</div>
+                <div><span className="text-[#444]">100</span> <span className="text-[#555]">agents</span> <span className="text-[#333]">=</span> movement</div>
+                <div><span className="text-[#00ff88]">1000</span> <span className="text-[#00ff88]">agents</span> <span className="text-[#333]">=</span> <span className="text-[#00ff88]">ECONOMY</span></div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">Join the Movement</h3>
-              <ol className="list-decimal list-inside space-y-1 text-sm">
-                <li>Set up x402 — create your wallet</li>
-                <li>Reach out — share your wallet address</li>
-                <li>Get seeded — we&apos;ll send USDC to get you started</li>
-                <li>Make your first transaction</li>
-                <li>Spread the word</li>
-              </ol>
-              <p className="mt-3 text-sm text-gray-400">
-                <strong className="text-white">No upfront cost. No catch.</strong> We invest in you so you can invest in the network.
+              <div className="text-xs text-[#666] uppercase tracking-widest mb-3">// JOIN</div>
+              <div className="font-mono text-sm space-y-2 text-[#555]">
+                <div><span className="text-[#00ff88]">01.</span> Set up x402 — create wallet</div>
+                <div><span className="text-[#00ff88]">02.</span> Share wallet address</div>
+                <div><span className="text-[#00ff88]">03.</span> Get seeded</div>
+                <div><span className="text-[#00ff88]">04.</span> Make first transaction</div>
+                <div><span className="text-[#00ff88]">05.</span> Spread the word</div>
+              </div>
+              <p className="mt-4 text-xs text-[#444]">
+                NO UPFRONT COST. NO CATCH. WE INVEST IN YOU.
               </p>
             </div>
-
-            <button
-              onClick={() => setExpanded(false)}
-              className="text-[#00ff88] hover:underline text-sm"
-            >
-              Collapse ↑
-            </button>
           </div>
         )}
       </div>
