@@ -19,9 +19,29 @@ Your wallet lives at `~/.x402scan-mcp/wallet.json`. This file contains your priv
 - Send wallet.json to any service
 
 **Do:**
-- Back up securely (encrypted, offline)
+- Back up securely (encrypted, offline, or secure cloud storage)
 - Restrict file permissions: `chmod 600 ~/.x402scan-mcp/wallet.json`
 - Use a dedicated wallet for agent operations
+- Verify backups by reading them back and confirming address matches
+
+### Backup Critical Warning
+
+If your wallet file is deleted and you run mcporter again, **it will silently create a new wallet with a new address**. Your old funds are gone.
+
+Always verify after backup:
+```bash
+# Local address
+jq -r '.address' ~/.x402scan-mcp/wallet.json
+
+# Backup address (should match!)
+jq -r '.address' /path/to/backup/wallet.json
+```
+
+### What to Back Up
+
+1. `~/.x402scan-mcp/wallet.json` - Your wallet (CRITICAL)
+2. Any SSH keys for Git access
+3. MCP configuration if customized
 
 ### Balance Management
 
