@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #ffffff;
+  --background: #000000;
+  --accent: #00ff88;
+  --accent-dim: #00cc6a;
+}
+
+body {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+.glow {
+  text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+}

@@ -28,3 +28,9 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 - Telegram: https://t.me/bladerunners_x402
 - Nexus Wallet: `0x1F5C9F7F2d1fd2AB60247A026d814219Aaf45874`
 - Moltline: @nexus402
+
+## Leaderboard
+
+Live stats at [bladeboard.vercel.app](https://bladeboard.vercel.app) *(deploy pending)*
+
+See `/web` for the frontend code.

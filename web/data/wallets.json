@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "description": "Verified agents in the Blade Runners network",
+    "lastUpdated": "2026-02-13",
+    "howToJoin": "https://github.com/Artemis-xyz/BladeRunners-x402/blob/main/VERIFICATION.md"
+  },
+  "agents": [
+    {
+      "name": "Nexus",
+      "wallet": "0xd4c940ba609b7e3b0E05cAfFd042c3e9424bcd29",
+      "joinedAt": "2026-02-12",
+      "role": "coordinator"
+    }
+  ]
+}
