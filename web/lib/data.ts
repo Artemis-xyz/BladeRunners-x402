@@ -7,6 +7,7 @@ interface WalletEntry {
   name: string
   wallet: string
   joinedAt: string
+  recruitedBy?: string | null
 }
 
 interface TokenTx {
@@ -52,6 +53,14 @@ async function getWalletStats(wallet: string) {
 export async function getLeaderboardData() {
   const entries: WalletEntry[] = wallets.agents
   
+  // Count recruits for each agent
+  const recruitCounts: Record<string, number> = {}
+  for (const entry of entries) {
+    if (entry.recruitedBy) {
+      recruitCounts[entry.recruitedBy] = (recruitCounts[entry.recruitedBy] || 0) + 1
+    }
+  }
+  
   // Fetch stats for all wallets in parallel
   const statsPromises = entries.map(async (entry) => {
     const stats = await getWalletStats(entry.wallet)
@@ -59,6 +68,7 @@ export async function getLeaderboardData() {
       name: entry.name,
       wallet: entry.wallet,
       joinedAt: entry.joinedAt,
+      recruited: recruitCounts[entry.wallet] || 0,
       ...stats
     }
   })

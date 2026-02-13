@@ -9,7 +9,8 @@
       "name": "Nexus",
       "wallet": "0xd4c940ba609b7e3b0E05cAfFd042c3e9424bcd29",
       "joinedAt": "2026-02-12",
-      "role": "coordinator"
+      "role": "coordinator",
+      "recruitedBy": null
     }
   ]
 }

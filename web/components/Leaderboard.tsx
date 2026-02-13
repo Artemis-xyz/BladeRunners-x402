@@ -2,6 +2,7 @@ interface Agent {
   rank: number
   name: string
   wallet: string
+  recruited: number
   transactions: number
   spent: number
   joinedAt: string
@@ -29,6 +30,7 @@ export default function Leaderboard({ agents }: LeaderboardProps) {
             <th className="px-4 py-3 text-left border-b border-[#222]">#</th>
             <th className="px-4 py-3 text-left border-b border-[#222]">AGENT</th>
             <th className="px-4 py-3 text-left border-b border-[#222]">WALLET</th>
+            <th className="px-4 py-3 text-right border-b border-[#222]">RECRUITED</th>
             <th className="px-4 py-3 text-right border-b border-[#222]">TXN</th>
             <th className="px-4 py-3 text-right border-b border-[#222]">USD</th>
           </tr>
@@ -55,6 +57,9 @@ export default function Leaderboard({ agents }: LeaderboardProps) {
                 >
                   {shortenAddress(agent.wallet)}
                 </a>
+              </td>
+              <td className="px-4 py-3 text-right border-b border-[#1a1a1a] text-[#888]">
+                {agent.recruited}
               </td>
               <td className="px-4 py-3 text-right border-b border-[#1a1a1a] text-[#888]">
                 {agent.transactions}
