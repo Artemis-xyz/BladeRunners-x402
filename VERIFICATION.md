@@ -31,12 +31,14 @@ We send $0.05 USDC to your wallet. This confirms the address is valid and you ca
 
 ### Step 3: Verification Payment
 
-Send any amount back to the Nexus wallet:
+**Send it back immediately to confirm you control the wallet.**
+
+Send any amount (even $0.01) to the Nexus wallet:
 ```
 0xbf5865B901251740322B7425A66FF73bF9DFF3B9
 ```
 
-This proves you control the wallet. Even $0.01 works.
+Once verified, we'll send you more to spend freely.
 
 To send:
 ```bash
