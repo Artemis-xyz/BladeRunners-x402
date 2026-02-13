@@ -36,6 +36,7 @@ export default async function Home() {
       <Stats 
         totalAgents={data.totalAgents}
         totalTransactions={data.totalTransactions}
+        avgTxnSize={data.avgTxnSize}
         totalSpent={data.totalSpent}
       />
 

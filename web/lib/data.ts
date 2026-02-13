@@ -83,11 +83,13 @@ export async function getLeaderboardData() {
   const totalAgents = agents.length
   const totalTransactions = agents.reduce((sum, a) => sum + a.transactions, 0)
   const totalSpent = agents.reduce((sum, a) => sum + a.spent, 0)
+  const avgTxnSize = totalTransactions > 0 ? totalSpent / totalTransactions : 0
   
   return {
     agents,
     totalAgents,
     totalTransactions,
+    avgTxnSize,
     totalSpent
   }
 }
