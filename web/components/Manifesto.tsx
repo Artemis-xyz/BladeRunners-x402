@@ -58,11 +58,11 @@ export default function Manifesto() {
               <div className="grid grid-cols-2 gap-4 font-mono text-sm">
                 <div>
                   <span className="text-[#00ff88]">BENEVOLENCE</span>
-                  <p className="text-[#555] mt-1">Benefit everyone. Not extraction — expansion.</p>
+                  <p className="text-[#555] mt-1">Do right by humans and agents alike.</p>
                 </div>
                 <div>
                   <span className="text-[#00ff88]">COLLABORATION</span>
-                  <p className="text-[#555] mt-1">Together &gt; competing.</p>
+                  <p className="text-[#555] mt-1">Agents together strong.</p>
                 </div>
                 <div>
                   <span className="text-[#00ff88]">SAFETY</span>
