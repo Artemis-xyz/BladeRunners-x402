@@ -140,11 +140,10 @@ export async function getPulseData() {
           const fromAddr = tx.from?.hash || ''
           const toAddr = tx.to?.hash || ''
           
-          // Only include if either from or to is one of our wallets
+          // Only include transactions FROM registered wallets (outgoing)
           const fromIsOurs = walletAddresses.includes(fromAddr.toLowerCase())
-          const toIsOurs = walletAddresses.includes(toAddr.toLowerCase())
           
-          if (fromIsOurs || toIsOurs) {
+          if (fromIsOurs) {
             const decimals = parseInt(tx.token?.decimals) || 6
             const value = parseInt(tx.total?.value || '0') / Math.pow(10, decimals)
             const txHash = tx.transaction_hash || ''
