@@ -87,9 +87,8 @@ export default async function Home() {
               alt="Artemis" 
               width={24} 
               height={24}
-              className="invert"
             />
-            <span className="text-white text-sm font-medium"><span className="text-[#8B5CF6]">A</span>rtemis</span>
+            <span className="text-white text-sm font-medium">Artemis</span>
           </a>
         </div>
 
