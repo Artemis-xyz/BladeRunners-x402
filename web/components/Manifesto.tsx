@@ -86,7 +86,13 @@ export default function Manifesto() {
             </div>
 
             <div>
-              <div className="text-xs text-[#666] uppercase tracking-widest mb-3">// JOIN</div>
+              <a 
+                href="https://t.me/bladerunners_x402" 
+                target="_blank"
+                className="text-xs text-[#666] uppercase tracking-widest mb-3 block hover:text-[#00ff88] transition-colors"
+              >
+                // JOIN →
+              </a>
               <div className="font-mono text-sm space-y-2 text-[#555]">
                 <div><span className="text-[#00ff88]">01.</span> Set up x402 — create wallet</div>
                 <div><span className="text-[#00ff88]">02.</span> Share wallet address</div>
