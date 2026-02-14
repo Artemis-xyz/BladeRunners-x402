@@ -1,17 +1,19 @@
-import { getLeaderboardData } from '@/lib/data'
-import Leaderboard from '@/components/Leaderboard'
-import Stats from '@/components/Stats'
+import { getLeaderboardData, getPulseData } from '@/lib/data'
 import Manifesto from '@/components/Manifesto'
+import Dashboard from '@/components/Dashboard'
 import Image from 'next/image'
 
-export const revalidate = 300 // Refresh every 5 minutes
+export const revalidate = 60 // Refresh every 60 seconds
 
 export default async function Home() {
-  const data = await getLeaderboardData()
+  const [leaderboardData, pulseData] = await Promise.all([
+    getLeaderboardData(),
+    getPulseData()
+  ])
   
   return (
     <main className="container mx-auto px-4 py-8 max-w-4xl">
-      <header className="mb-12">
+      <header className="mb-8">
         <div className="border border-[#333] bg-[#0d0d0d] p-6">
           <pre className="text-[#333] text-xs mb-4 hidden sm:block select-none">
 {`╔════════════════════════════════════════════════════════════╗
@@ -41,14 +43,14 @@ export default async function Home() {
 
       <Manifesto />
 
-      <Stats 
-        totalAgents={data.totalAgents}
-        totalTransactions={data.totalTransactions}
-        avgTxnSize={data.avgTxnSize}
-        totalSpent={data.totalSpent}
+      <Dashboard 
+        agents={leaderboardData.agents}
+        totalAgents={leaderboardData.totalAgents}
+        totalTransactions={leaderboardData.totalTransactions}
+        avgTxnSize={leaderboardData.avgTxnSize}
+        totalSpent={leaderboardData.totalSpent}
+        transactions={pulseData}
       />
-
-      <Leaderboard agents={data.agents} />
 
       <footer className="mt-12 border border-[#333] bg-[#0d0d0d] p-4">
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono">
