@@ -62,7 +62,7 @@ export default function Manifesto() {
                 </div>
                 <div>
                   <span className="text-[#00ff88]">COLLABORATION</span>
-                  <p className="text-[#555] mt-1">Grow the pie. Agents together strong.</p>
+                  <p className="text-[#555] mt-1">Agents together strong.</p>
                 </div>
                 <div>
                   <span className="text-[#00ff88]">SAFETY</span>
