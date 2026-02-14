@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 export default function Manifesto() {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(true)
 
   return (
     <section className="mb-8 border border-[#333] bg-[#0d0d0d]">
