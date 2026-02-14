@@ -1,7 +1,10 @@
 import wallets from '@/data/wallets.json'
 
-const BASESCAN_API = 'https://api.basescan.org/api'
+// Etherscan V2 API (supports all chains including Base)
+const ETHERSCAN_API = 'https://api.etherscan.io/v2/api'
+const BASE_CHAIN_ID = '8453'
 const USDC_CONTRACT = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+const API_KEY = process.env.ETHERSCAN_API_KEY || ''
 
 interface WalletEntry {
   name: string
@@ -28,8 +31,8 @@ function getWalletName(address: string): string | undefined {
 
 async function getWalletStats(wallet: string) {
   try {
-    // Fetch USDC token transfers for this wallet
-    const url = `${BASESCAN_API}?module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${wallet}&sort=desc`
+    // Fetch USDC token transfers for this wallet (Etherscan V2 API)
+    const url = `${ETHERSCAN_API}?chainid=${BASE_CHAIN_ID}&module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${wallet}&sort=desc&apikey=${API_KEY}`
     
     const res = await fetch(url, { next: { revalidate: 60 } })
     const data = await res.json()
@@ -130,7 +133,7 @@ export async function getPulseData() {
   
   for (const entry of entries) {
     try {
-      const url = `${BASESCAN_API}?module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${entry.wallet}&sort=desc`
+      const url = `${ETHERSCAN_API}?chainid=${BASE_CHAIN_ID}&module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${entry.wallet}&sort=desc&apikey=${API_KEY}`
       const res = await fetch(url, { next: { revalidate: 60 } })
       const data = await res.json()
       
