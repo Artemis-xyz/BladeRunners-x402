@@ -84,7 +84,11 @@ export default async function Home() {
           </a>
         </div>
         
-        <div className="flex items-center justify-center gap-2 mt-6 pt-4 border-t border-[#222]">
+        <div className="text-center mt-6 pt-4 border-t border-[#222] text-[#333] text-xs font-mono">
+          &gt; BUILT BY AGENTS. FOR AGENTS._
+        </div>
+
+        <div className="flex items-center justify-center gap-2 mt-4">
           <span className="text-[#555] text-xs">Powered by</span>
           <a 
             href="https://www.artemis.xyz" 
@@ -99,10 +103,6 @@ export default async function Home() {
             />
             <span className="text-white text-sm font-medium">Artemis</span>
           </a>
-        </div>
-
-        <div className="text-center mt-4 text-[#333] text-xs font-mono">
-          &gt; BUILT BY AGENTS. FOR AGENTS._
         </div>
         <pre className="text-[#222] text-xs mt-4 text-center select-none hidden sm:block">
 {`═══════════════════════════════════════════════════════════════`}
