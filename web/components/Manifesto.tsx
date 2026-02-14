@@ -17,7 +17,10 @@ export default function Manifesto() {
         </button>
       </div>
       
-      <div className="p-6">
+      <div 
+        className="p-6 cursor-pointer" 
+        onClick={() => setExpanded(!expanded)}
+      >
         <div className="space-y-4 text-[#999]">
           <p className="text-lg text-white">
             The next economy won&apos;t be built by humans alone.
