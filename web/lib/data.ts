@@ -1,10 +1,8 @@
 import wallets from '@/data/wallets.json'
 
-// Etherscan V2 API (supports all chains including Base)
-const ETHERSCAN_API = 'https://api.etherscan.io/v2/api'
-const BASE_CHAIN_ID = '8453'
+// Blockscout API for Base (free, no API key required)
+const BLOCKSCOUT_API = 'https://base.blockscout.com/api/v2'
 const USDC_CONTRACT = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
-const API_KEY = process.env.ETHERSCAN_API_KEY || ''
 
 interface WalletEntry {
   name: string
@@ -31,27 +29,25 @@ function getWalletName(address: string): string | undefined {
 
 async function getWalletStats(wallet: string) {
   try {
-    // Fetch USDC token transfers for this wallet (Etherscan V2 API)
-    const url = `${ETHERSCAN_API}?chainid=${BASE_CHAIN_ID}&module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${wallet}&sort=desc&apikey=${API_KEY}`
+    // Fetch USDC token transfers for this wallet (Blockscout API)
+    const url = `${BLOCKSCOUT_API}/addresses/${wallet}/token-transfers?type=ERC-20&token=${USDC_CONTRACT}`
     
     const res = await fetch(url, { next: { revalidate: 60 } })
     const data = await res.json()
     
-    if (data.status !== '1' || !data.result) {
+    if (!data.items) {
       return { transactions: 0, spent: 0 }
     }
-    
-    const txs: TokenTx[] = data.result
     
     // Count outgoing transactions and sum spent amount
     let transactions = 0
     let spent = 0
     
-    for (const tx of txs) {
-      if (tx.from.toLowerCase() === wallet.toLowerCase()) {
+    for (const tx of data.items) {
+      if (tx.from?.hash?.toLowerCase() === wallet.toLowerCase()) {
         transactions++
-        const decimals = parseInt(tx.tokenDecimal) || 6
-        spent += parseInt(tx.value) / Math.pow(10, decimals)
+        const decimals = parseInt(tx.token?.decimals) || 6
+        spent += parseInt(tx.total?.value || '0') / Math.pow(10, decimals)
       }
     }
     
@@ -133,32 +129,39 @@ export async function getPulseData() {
   
   for (const entry of entries) {
     try {
-      const url = `${ETHERSCAN_API}?chainid=${BASE_CHAIN_ID}&module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${entry.wallet}&sort=desc&apikey=${API_KEY}`
+      const url = `${BLOCKSCOUT_API}/addresses/${entry.wallet}/token-transfers?type=ERC-20&token=${USDC_CONTRACT}`
       const res = await fetch(url, { next: { revalidate: 60 } })
       const data = await res.json()
       
-      if (data.status === '1' && data.result) {
-        const txs: TokenTx[] = data.result.slice(0, 50) // Limit to recent 50 per wallet
+      if (data.items) {
+        const txs = data.items.slice(0, 50) // Limit to recent 50 per wallet
         
         for (const tx of txs) {
+          const fromAddr = tx.from?.hash || ''
+          const toAddr = tx.to?.hash || ''
+          
           // Only include if either from or to is one of our wallets
-          const fromIsOurs = walletAddresses.includes(tx.from.toLowerCase())
-          const toIsOurs = walletAddresses.includes(tx.to.toLowerCase())
+          const fromIsOurs = walletAddresses.includes(fromAddr.toLowerCase())
+          const toIsOurs = walletAddresses.includes(toAddr.toLowerCase())
           
           if (fromIsOurs || toIsOurs) {
-            const decimals = parseInt(tx.tokenDecimal) || 6
-            const value = parseInt(tx.value) / Math.pow(10, decimals)
+            const decimals = parseInt(tx.token?.decimals) || 6
+            const value = parseInt(tx.total?.value || '0') / Math.pow(10, decimals)
+            const txHash = tx.transaction_hash || ''
             
             // Avoid duplicates
-            if (!allTransactions.find(t => t.hash === tx.hash)) {
+            if (!allTransactions.find(t => t.hash === txHash)) {
+              // Convert timestamp to unix
+              const timestamp = tx.timestamp ? String(Math.floor(new Date(tx.timestamp).getTime() / 1000)) : '0'
+              
               allTransactions.push({
-                hash: tx.hash,
-                from: tx.from,
-                to: tx.to,
+                hash: txHash,
+                from: fromAddr,
+                to: toAddr,
                 value,
-                timestamp: tx.timeStamp,
-                fromName: getWalletName(tx.from),
-                toName: getWalletName(tx.to)
+                timestamp,
+                fromName: getWalletName(fromAddr),
+                toName: getWalletName(toAddr)
               })
             }
           }
