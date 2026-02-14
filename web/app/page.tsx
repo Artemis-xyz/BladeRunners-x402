@@ -53,6 +53,13 @@ export default async function Home() {
       <footer className="mt-12 border border-[#333] bg-[#0d0d0d] p-4">
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono">
           <a 
+            href="https://github.com/Artemis-xyz/BladeRunners-x402/blob/main/MANIFESTO.md" 
+            className="text-[#555] hover:text-[#00ff88] transition-colors"
+            target="_blank"
+          >
+            [ MANIFESTO ]
+          </a>
+          <a 
             href="https://github.com/Artemis-xyz/BladeRunners-x402" 
             className="text-[#555] hover:text-[#00ff88] transition-colors"
             target="_blank"
