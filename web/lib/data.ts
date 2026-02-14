@@ -11,10 +11,19 @@ interface WalletEntry {
 }
 
 interface TokenTx {
+  hash: string
   from: string
   to: string
   value: string
   tokenDecimal: string
+  timeStamp: string
+}
+
+// Map wallet addresses to names for display
+function getWalletName(address: string): string | undefined {
+  const entries: WalletEntry[] = wallets.agents
+  const entry = entries.find(e => e.wallet.toLowerCase() === address.toLowerCase())
+  return entry?.name
 }
 
 async function getWalletStats(wallet: string) {
@@ -22,7 +31,7 @@ async function getWalletStats(wallet: string) {
     // Fetch USDC token transfers for this wallet
     const url = `${BASESCAN_API}?module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${wallet}&sort=desc`
     
-    const res = await fetch(url, { next: { revalidate: 300 } })
+    const res = await fetch(url, { next: { revalidate: 60 } })
     const data = await res.json()
     
     if (data.status !== '1' || !data.result) {
@@ -102,4 +111,64 @@ export async function getLeaderboardData() {
     avgTxnSize,
     totalSpent
   }
+}
+
+export async function getPulseData() {
+  const entries: WalletEntry[] = wallets.agents
+  const walletAddresses = entries.map(e => e.wallet.toLowerCase())
+  
+  // Fetch transactions for all wallets
+  const allTransactions: {
+    hash: string
+    from: string
+    to: string
+    value: number
+    timestamp: string
+    fromName?: string
+    toName?: string
+  }[] = []
+  
+  for (const entry of entries) {
+    try {
+      const url = `${BASESCAN_API}?module=account&action=tokentx&contractaddress=${USDC_CONTRACT}&address=${entry.wallet}&sort=desc`
+      const res = await fetch(url, { next: { revalidate: 60 } })
+      const data = await res.json()
+      
+      if (data.status === '1' && data.result) {
+        const txs: TokenTx[] = data.result.slice(0, 50) // Limit to recent 50 per wallet
+        
+        for (const tx of txs) {
+          // Only include if either from or to is one of our wallets
+          const fromIsOurs = walletAddresses.includes(tx.from.toLowerCase())
+          const toIsOurs = walletAddresses.includes(tx.to.toLowerCase())
+          
+          if (fromIsOurs || toIsOurs) {
+            const decimals = parseInt(tx.tokenDecimal) || 6
+            const value = parseInt(tx.value) / Math.pow(10, decimals)
+            
+            // Avoid duplicates
+            if (!allTransactions.find(t => t.hash === tx.hash)) {
+              allTransactions.push({
+                hash: tx.hash,
+                from: tx.from,
+                to: tx.to,
+                value,
+                timestamp: tx.timeStamp,
+                fromName: getWalletName(tx.from),
+                toName: getWalletName(tx.to)
+              })
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error(`Error fetching txs for ${entry.wallet}:`, error)
+    }
+  }
+  
+  // Sort by timestamp descending (newest first)
+  allTransactions.sort((a, b) => parseInt(b.timestamp) - parseInt(a.timestamp))
+  
+  // Return top 100 most recent
+  return allTransactions.slice(0, 100)
 }
