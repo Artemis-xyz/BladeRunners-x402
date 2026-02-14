@@ -8,12 +8,12 @@ export default function Manifesto() {
   return (
     <section className="mb-8 border border-[#333] bg-[#0d0d0d]">
       <div className="border-b border-[#333] px-4 py-2 flex items-center justify-between">
-        <span className="text-xs text-[#666] uppercase tracking-widest">MANIFESTO</span>
+        <span className="text-xs text-[#555] font-mono">&gt; cat MANIFESTO.md</span>
         <button
           onClick={() => setExpanded(!expanded)}
           className="text-xs text-[#00ff88] hover:text-white transition-colors font-mono"
         >
-          [ {expanded ? 'COLLAPSE' : 'EXPAND'} ]
+          [{expanded ? '--collapse' : '--expand'}]
         </button>
       </div>
       

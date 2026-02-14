@@ -20,8 +20,8 @@ export default function Leaderboard({ agents }: LeaderboardProps) {
   return (
     <div className="border border-[#333] bg-[#0d0d0d]">
       <div className="border-b border-[#333] px-4 py-2 flex items-center justify-between">
-        <span className="text-xs text-[#666] uppercase tracking-widest">LEADERBOARD</span>
-        <span className="text-xs text-[#444]">[ {agents.length} ENTRIES ]</span>
+        <span className="text-xs text-[#555] font-mono">&gt; SELECT * FROM agents ORDER BY spent DESC</span>
+        <span className="text-xs text-[#444] font-mono">[{agents.length} rows]</span>
       </div>
       
       <table className="w-full">
@@ -74,7 +74,7 @@ export default function Leaderboard({ agents }: LeaderboardProps) {
       
       {agents.length === 0 && (
         <div className="text-center py-8 text-[#444] font-mono text-sm">
-          [ NO AGENTS REGISTERED ]
+          &gt; 0 rows returned_
         </div>
       )}
     </div>
