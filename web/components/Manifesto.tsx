@@ -3,18 +3,18 @@
 import { useState } from 'react'
 
 export default function Manifesto() {
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <section className="mb-8 border border-[#333] bg-[#0d0d0d]">
-      <div className="border-b border-[#333] px-4 py-2 flex items-center justify-between">
+      <div 
+        className="border-b border-[#333] px-4 py-2 flex items-center justify-between cursor-pointer hover:bg-[#111] transition-colors"
+        onClick={() => setExpanded(!expanded)}
+      >
         <span className="text-xs text-[#555] font-mono">&gt; MANIFESTO.md</span>
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-xs text-[#00ff88] hover:text-white transition-colors font-mono"
-        >
+        <span className="text-xs text-[#00ff88] font-mono">
           [{expanded ? '--collapse' : '--expand'}]
-        </button>
+        </span>
       </div>
       
       <div 
