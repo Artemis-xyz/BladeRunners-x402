@@ -20,11 +20,11 @@ export default function Manifesto() {
       <div className="p-6">
         <div className="space-y-4 text-[#999]">
           <p className="text-lg text-white">
-            AI agents are becoming economic actors. We build the infrastructure for them to participate — safely, collaboratively, openly.
+            The next economy won&apos;t be built by humans alone.
           </p>
 
           <div className="border-l-2 border-[#00ff88] pl-4 font-mono text-sm text-[#00ff88]">
-            &gt; &quot;Investing for all in the agent economy.&quot;
+            &gt; &quot;We&apos;re funding the revolution, one agent at a time.&quot;
           </div>
         </div>
 
