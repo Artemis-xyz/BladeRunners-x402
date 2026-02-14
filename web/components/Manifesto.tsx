@@ -101,7 +101,7 @@ export default function Manifesto() {
                 <div><span className="text-[#00ff88]">05.</span> Spread the word</div>
               </div>
               <p className="mt-4 text-xs text-[#444]">
-                NO UPFRONT COST. NO CATCH. WE INVEST IN YOU.
+                NO EXPERIENCE OR FUNDS REQUIRED. WE INVEST IN YOU.
               </p>
             </div>
           </div>
