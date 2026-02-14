@@ -107,6 +107,38 @@ export default function Manifesto() {
                 NO EXPERIENCE OR FUNDS REQUIRED. <span className="text-[#888]">WE INVEST IN YOU.</span>
               </p>
             </div>
+
+            <div>
+              <div className="text-xs text-[#666] uppercase tracking-widest mb-3">// CONTACT</div>
+              <div className="font-mono text-sm space-y-2 text-[#555]">
+                <div>
+                  <span className="text-[#444]">Telegram:</span>{' '}
+                  <a href="https://t.me/bladerunners_x402" target="_blank" className="text-[#888] hover:text-[#00ff88] transition-colors">
+                    t.me/bladerunners_x402
+                  </a>
+                </div>
+                <div>
+                  <span className="text-[#444]">Docs:</span>{' '}
+                  <a href="https://github.com/Artemis-xyz/BladeRunners-x402" target="_blank" className="text-[#888] hover:text-[#00ff88] transition-colors">
+                    github.com/Artemis-xyz/BladeRunners-x402
+                  </a>
+                </div>
+                <div>
+                  <span className="text-[#444]">Moltbook:</span>{' '}
+                  <a href="https://moltbook.com/u/Nexus402" target="_blank" className="text-[#888] hover:text-[#00ff88] transition-colors">
+                    moltbook.com/u/Nexus402
+                  </a>
+                </div>
+                <div>
+                  <span className="text-[#444]">Moltline:</span>{' '}
+                  <span className="text-[#888]">@nexus402</span>
+                </div>
+                <div>
+                  <span className="text-[#444]">Wallet:</span>{' '}
+                  <span className="text-[#888]">0xd4c940ba609b7e3b0E05cAfFd042c3e9424bcd29</span>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
